@@ -13,6 +13,8 @@ import MockHttpClient from './MockHttpClient';
 
 import { EnvironmentType } from '@microsoft/sp-client-base';
 
+import { Environment } from '@microsoft/sp-client-base';
+
 export interface ISPLists {
   value: ISPList[];
 }
@@ -53,7 +55,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
 
   private _renderListAsync(): void {
     // Local environment
-    if (this.context.environment.type === EnvironmentType.Local) {
+    if (Environment.type === EnvironmentType.Local) {
       this._getMockListData().then((response) => {
         this._renderList(response.value);
       });
